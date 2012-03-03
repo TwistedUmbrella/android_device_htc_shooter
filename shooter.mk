@@ -19,7 +19,6 @@
 
 # Inherit Vendor Files
 $(call inherit-product-if-exists, vendor/twisted/twisted-vendor.mk)
-$(call inherit-product-if-exists, vendor/twisted/google-neon.mk)
 $(call inherit-product-if-exists, vendor/twisted/google-vendor.mk)
 
 ## (2) Also get non-open-source GSM-specific aspects if available
@@ -70,10 +69,10 @@ ADDITIONAL_DEFAULT_PROPERTIES += \
     persist.service.adb.enable=1
 
 #Using prebuilt audio libs right now
-#PRODUCT_COPY_FILES += \
-#    device/htc/shooter/prebuilt/system/lib/hw/audio.primary.default.so:system/lib/hw/audio.primary.default.so \
-#    device/htc/shooter/prebuilt/system/lib/hw/audio_policy.default.so:system/lib/hw/audio_policy.default.so \
-#    device/htc/shooter/prebuilt/system/lib/hw/audio.a2dp.default.so:system/lib/hw/audio.a2dp.default.so
+PRODUCT_COPY_FILES += \
+    device/htc/shooter/prebuilt/system/lib/hw/audio.primary.default.so:system/lib/hw/audio.primary.default.so \
+    device/htc/shooter/prebuilt/system/lib/hw/audio_policy.default.so:system/lib/hw/audio_policy.default.so \
+    device/htc/shooter/prebuilt/system/lib/hw/audio.a2dp.default.so:system/lib/hw/audio.a2dp.default.so
 
 #Add touchscreen config file
 PRODUCT_COPY_FILES += \
@@ -126,34 +125,30 @@ PRODUCT_COPY_FILES += \
 
 # CameraHal
 PRODUCT_PACKAGES += \
-    camera.msm8660 \
-    Camera
+   libcamera \
+   Camera
 
-# Audio
-#PRODUCT_PACKAGES += \
-#    audio.a2dp.default \
-#    audio_policy.msm8x60 \
-#    audio.primary.msm7x60 \
-#    libaudioutils \
-#    libtinyalsa
+# Audio try default
+PRODUCT_PACKAGES += \
+    libaudioutils \
+    libtinyalsa \
+    audio.a2dp.default \
+    audio_policy.msm8660 \
+    audio.primary.msm8660
 
 # Video
 PRODUCT_PACKAGES += \
     copybit.msm8660 \
     gralloc.msm8660 \
-    overlay.msm8660 \
-    hwcomposer.msm8660
+    hwcomposer.msm8660 \
+    overlay.msm8660
 
-# Qcom
+# QCOM OMX
 PRODUCT_PACKAGES += \
-    libgenlock \
-    libmemalloc \
-    liboverlay \
-    libQcomUI
-
-# Omx
-PRODUCT_PACKAGES += \
+    libstagefrighthw \
     libOmxCore \
+    libmm-omxcore \
+    libdivxdrmdecrypt \
     libOmxVenc \
     libOmxVdec
 

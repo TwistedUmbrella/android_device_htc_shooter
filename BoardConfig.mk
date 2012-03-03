@@ -46,20 +46,14 @@ WIFI_DRIVER_FW_PATH_STA          := "/system/etc/firmware/fw_bcm4329.bin"
 WIFI_DRIVER_FW_PATH_AP           := "/system/etc/firmware/fw_bcm4329_apsta.bin"
 WIFI_DRIVER_FW_STA_PATH          := "/system/etc/firmware/fw_bcm4329.bin"
 WIFI_DRIVER_FW_AP_PATH           := "/system/etc/firmware/fw_bcm4329_apsta.bin"
-WIFI_DRIVER_MODULE_ARG           := "firmware_path=/system/etc/firmware/fw_bcm4329.bin nvram_path=/proc/calibration iface_name=eth0"
+WIFI_DRIVER_MODULE_ARG           := "firmware_path=/system/etc/firmware/fw_bcm4329.bin nvram_path=/proc/calibration iface_name=wlan"
 WIFI_DRIVER_MODULE_NAME          := "bcm4329"
 BOARD_WLAN_DEVICE_REV            := bcm4329
-WIFI_BAND                        := 802_11_ABGN
-
-TARGET_CUSTOM_IFACE := eth0
-BUILD_QCOM_VENDOR=true
+WIFI_BAND                        := 802_11_ABG
 
 # Audio
-BOARD_USES_AUDIO_LEGACY            := true
+BOARD_USES_AUDIO_LEGACY            := false
 BOARD_USES_GENERIC_AUDIO           := false
-TARGET_PROVIDES_LIBAUDIO           := false
-BOARD_USES_ALSA_AUDIO              := false
-BOARD_WITH_ALSA_UTILS              := false
 
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
@@ -79,37 +73,31 @@ TARGET_USES_GENLOCK := true
 TARGET_USES_SF_BYPASS := false
 TARGET_HAVE_BYPASS := false
 TARGET_GRALLOC_USES_ASHMEM := true
-TARGET_HAVE_HDMI_OUT := true
 TARGET_HARDWARE_3D := true
 BOARD_EGL_CFG := device/htc/shooter/prebuilt/system/lib/egl/egl.cfg
 BOARD_USES_ADRENO_200 := true
-BOARD_USES_OVERLAY := true
 BOARD_OVERLAY_FORMAT_YCbCr_420_SP := true
 TARGET_USE_SCORPION_BIONIC_OPTIMIZATION := true
 BOARD_EGL_GRALLOC_USAGE_FILTER := true
-#BOARD_NO_RGBX_8888 := true
-#BOARD_USES_HGL := true
 
 COMMON_GLOBAL_CFLAGS += -DREFRESH_RATE=60 -DQCOM_HARDWARE
 
-#COMMON_GLOBAL_CFLAGS += \
-#    -DREFRESH_RATE=60 \
-#    -DMISSING_EGL_EXTERNAL_IMAGE \
-#    -DMISSING_EGL_PIXEL_FORMAT_YV12 \
-#    -DMISSING_GRALLOC_BUFFERS
-
+BUILD_QCOM_VENDOR=true
+TARGET_QCOM_HDMI_OUT := true
 BOARD_USES_QCOM_HARDWARE := true
 BOARD_USES_QCOM_LIBS := true
 BOARD_USES_QCOM_LIBRPC := true
+BOARD_USES_QCOM_GPS := true
 BOARD_USE_QCOM_PMEM := true
-#BOARD_USES_QCOM_GPS := true
-TARGET_QCOM_HDMI_OUT := true
+#BOARD_USES_QCOM_LEGACY := false
+
 #BOARD_CAMERA_USE_GETBUFFERINFO := true
 
 # Legacy touchscreen support
 #BOARD_USE_LEGACY_TOUCHSCREEN := true
 
 BOARD_USE_NEW_LIBRIL_HTC := true
+BOARD_PROVIDES_LIBRIL := true
 TARGET_PROVIDES_LIBRIL := vendor/htc/shooter/proprietary/libril.so
 
 #BOARD_HAVE_SQN_WIMAX := true
