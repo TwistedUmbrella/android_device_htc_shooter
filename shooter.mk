@@ -69,10 +69,10 @@ ADDITIONAL_DEFAULT_PROPERTIES += \
     persist.service.adb.enable=1
 
 #Using prebuilt audio libs right now
-PRODUCT_COPY_FILES += \
-    device/htc/shooter/prebuilt/system/lib/hw/audio.primary.default.so:system/lib/hw/audio.primary.default.so \
-    device/htc/shooter/prebuilt/system/lib/hw/audio_policy.default.so:system/lib/hw/audio_policy.default.so \
-    device/htc/shooter/prebuilt/system/lib/hw/audio.a2dp.default.so:system/lib/hw/audio.a2dp.default.so
+#PRODUCT_COPY_FILES += \
+#    device/htc/shooter/prebuilt/system/lib/hw/audio.primary.default.so:system/lib/hw/audio.primary.default.so \
+#    device/htc/shooter/prebuilt/system/lib/hw/audio_policy.default.so:system/lib/hw/audio_policy.default.so \
+#    device/htc/shooter/prebuilt/system/lib/hw/audio.a2dp.default.so:system/lib/hw/audio.a2dp.default.so
 
 #Add touchscreen config file
 PRODUCT_COPY_FILES += \
