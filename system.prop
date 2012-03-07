@@ -2,8 +2,8 @@
 #
 
 debug.enabletr=false
-# debug.composition.type=c2d
-ro.sf.compbypass.enable=0
+debug.composition.type=c2d
+ro.sf.compbypass.enable=1
 debug.qctwa.statusbar = 1
 debug.qctwa.preservebuf = 1
 
