@@ -87,7 +87,6 @@ BOARD_USE_QCOM_PMEM := true
 #BOARD_USE_LEGACY_TOUCHSCREEN := true
 
 BOARD_USE_NEW_LIBRIL_HTC := true
-BOARD_PROVIDES_LIBRIL := true
 TARGET_PROVIDES_LIBRIL := vendor/htc/shooter/proprietary/libril.so
 
 #BOARD_HAVE_SQN_WIMAX := true
