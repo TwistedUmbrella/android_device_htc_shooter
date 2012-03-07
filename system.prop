@@ -1,11 +1,9 @@
 # system.prop for shooter
 #
 
-debug.fb.rgb565 = 0
-debug.sf.hw=1
-debug.composition.type=c2d
-ro.sf.compbypass.enable=0
 debug.enabletr=false
+# debug.composition.type=c2d
+ro.sf.compbypass.enable=0
 debug.qctwa.statusbar = 1
 debug.qctwa.preservebuf = 1
 
@@ -43,10 +41,6 @@ net.tcp.buffersize.wimax = 4096,221184,524288,4096,16384,110208
 wifi.interface=eth0
 wifi.supplicant_scan_interval=15
 ro.com.google.locationfeatures = 1
-
-# density in DPI of the LCD of this board. This is used to scale the UI
-# appropriately. If this property is not defined, the default value is 160 dpi.
-ro.sf.lcd_density = 240
 
 # For auto backlight default value
 settings.display.autobacklight=1

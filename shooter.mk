@@ -68,10 +68,6 @@ PRODUCT_COPY_FILES += \
     device/htc/shooter/prebuilt/root/init.shooter.usb.rc:root/init.shooter.usb.rc \
     device/htc/shooter/prebuilt/root/ueventd.shooter.rc:root/ueventd.shooter.rc
 
-# Temporary hack
-ADDITIONAL_DEFAULT_PROPERTIES += \
-    persist.service.adb.enable=1
-
 #Add touchscreen config file
 PRODUCT_COPY_FILES += \
     device/htc/shooter/prebuilt/system/usr/idc/atmel-touchscreen.idc:system/usr/idc/atmel-touchscreen.idc \

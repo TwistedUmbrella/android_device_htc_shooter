@@ -34,11 +34,10 @@ WIFI_DRIVER_FW_PATH_STA          := "/system/etc/firmware/fw_bcm4329.bin"
 WIFI_DRIVER_FW_PATH_AP           := "/system/etc/firmware/fw_bcm4329_apsta.bin"
 WIFI_DRIVER_FW_STA_PATH          := "/system/etc/firmware/fw_bcm4329.bin"
 WIFI_DRIVER_FW_AP_PATH           := "/system/etc/firmware/fw_bcm4329_apsta.bin"
-WIFI_DRIVER_MODULE_ARG           := "firmware_path=/system/etc/firmware/fw_bcm4329.bin nvram_path=/proc/calibration iface_name=eth0"
+WIFI_DRIVER_MODULE_ARG           := "firmware_path=/system/etc/firmware/fw_bcm4329.bin nvram_path=/proc/calibration iface_name=wlan0"
 WIFI_DRIVER_MODULE_NAME          := "bcm4329"
 BOARD_WLAN_DEVICE_REV            := bcm4329
 WIFI_BAND                        := 802_11_ABGN
-TARGET_CUSTOM_IFACE := eth0
 
 # Audio
 BOARD_USES_AUDIO_LEGACY            := false
@@ -55,14 +54,14 @@ BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := shooter
 BOARD_VENDOR_QCOM_GPS_LOC_API_AMSS_VERSION := 50000
 
 # Define egl.cfg location
-ARCH_ARM_HAVE_VFP := true
+# ARCH_ARM_HAVE_VFP := true
 USE_OPENGL_RENDERER := true
 TARGET_FORCE_CPU_UPLOAD := true
-TARGET_USES_C2D_COMPOSITION := true
+TARGET_USES_C2D_COMPOSITION := false
 TARGET_USES_OVERLAY := true
 TARGET_USES_GENLOCK := true
-TARGET_USES_SF_BYPASS := false
-TARGET_HAVE_BYPASS := false
+TARGET_USES_SF_BYPASS := true
+TARGET_HAVE_BYPASS := true
 TARGET_GRALLOC_USES_ASHMEM := true
 TARGET_HARDWARE_3D := true
 BOARD_EGL_CFG := device/htc/shooter/prebuilt/system/lib/egl/egl.cfg
@@ -79,16 +78,18 @@ BOARD_USES_QCOM_LIBS := true
 BOARD_USES_QCOM_LIBRPC := true
 BOARD_USES_QCOM_GPS := true
 BOARD_USE_QCOM_PMEM := true
-#BOARD_USES_QCOM_LEGACY := false
+# BOARD_USES_QCOM_LEGACY := false
 
-#BOARD_CAMERA_USE_GETBUFFERINFO := true
+DYNAMIC_SHARED_LIBV8SO := true
+
+# BOARD_CAMERA_USE_GETBUFFERINFO := true
 
 # Legacy touchscreen support
-#BOARD_USE_LEGACY_TOUCHSCREEN := true
+# BOARD_USE_LEGACY_TOUCHSCREEN := true
 
 BOARD_USE_NEW_LIBRIL_HTC := true
 
-#BOARD_HAVE_SQN_WIMAX := true
+# BOARD_HAVE_SQN_WIMAX := true
 
 BOARD_KERNEL_CMDLINE := no_console_suspend=1
 BOARD_KERNEL_BASE := 0x48000000
