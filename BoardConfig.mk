@@ -1,17 +1,5 @@
 USE_CAMERA_STUB := true
 
-# Additional Camera hacks for shooter
-#TARGET_LEGACY_CAMERA := true
-#TARGET_CAMERA_WRAPPER := 8x60
-
-PRODUCT_COPY_FILES += \
-    vendor/htc/shooter/proprietary/libcamera.so:obj/lib/libcamera.so \
-    vendor/htc/shooter/proprietary/libcamera.so:/system/lib/libcamera.so \
-    vendor/htc/shooter/proprietary/libcameraSP.so:obj/lib/libcameraSP.so \
-    vendor/htc/shooter/proprietary/libcameraSP.so:/system/lib/libcameraSP.so \
-    vendor/htc/shooter/proprietary/libcameraLN.so:obj/lib/libcameraLN.so \
-    vendor/htc/shooter/proprietary/libcameraLN.so:/system/lib/libcameraLN.so
-
 # inherit from the proprietary version
 -include vendor/htc/shooter/BoardConfigVendor.mk
 
@@ -54,6 +42,8 @@ WIFI_BAND                        := 802_11_ABG
 # Audio
 BOARD_USES_AUDIO_LEGACY            := false
 BOARD_USES_GENERIC_AUDIO           := false
+#BOARD_USES_QCOM_AUDIO_CALIBRATION  := true
+#BOARD_USES_QCOM_VOIP               := true
 
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true

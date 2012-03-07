@@ -17,8 +17,6 @@ struct tpa2051d3_platform_data {
 	unsigned char spkr_cmd[7];
 	unsigned char hsed_cmd[7];
 	unsigned char rece_cmd[7];
-	/* for spk enable gpio on cpu */
-	uint32_t gpio_tpa2051_spk_en_cpu;
 };
 
 struct tpa2051_config_data {
@@ -44,10 +42,10 @@ enum TPA2051_Mode {
 #define TPA2051_READ_CONFIG	_IOW(TPA2051_IOCTL_MAGIC, 0x02, unsigned)
 #define TPA2051_SET_MODE        _IOW(TPA2051_IOCTL_MAGIC, 0x03, unsigned)
 #define TPA2051_SET_PARAM       _IOW(TPA2051_IOCTL_MAGIC, 0x04,  unsigned)
-#define TPA2051_WRITE_REG       _IOW(TPA2051_IOCTL_MAGIC, 0x07,  unsigned)
 
 void set_speaker_amp(int on);
 void set_headset_amp(int on);
 void set_speaker_headset_amp(int on);
 void set_handset_amp(int on);
 #endif
+

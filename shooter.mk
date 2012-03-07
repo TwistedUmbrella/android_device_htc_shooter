@@ -27,6 +27,10 @@ $(call inherit-product-if-exists, vendor/htc/shooter/shooter-vendor.mk)
 # Inherit Language Files
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
+# These are the OpenMAX IL configuration files
+#PRODUCT_COPY_FILES += \
+#    device/htc/shooter/prebuilt/system/etc/media_profiles.xml:system/etc/media_profiles.xml
+
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 PRODUCT_NAME := htc_shooter
 PRODUCT_DEVICE := shooter
@@ -67,12 +71,6 @@ PRODUCT_COPY_FILES += \
 # Temporary hack
 ADDITIONAL_DEFAULT_PROPERTIES += \
     persist.service.adb.enable=1
-
-#Using prebuilt audio libs right now
-#PRODUCT_COPY_FILES += \
-#    device/htc/shooter/prebuilt/system/lib/hw/audio.primary.default.so:system/lib/hw/audio.primary.default.so \
-#    device/htc/shooter/prebuilt/system/lib/hw/audio_policy.default.so:system/lib/hw/audio_policy.default.so \
-#    device/htc/shooter/prebuilt/system/lib/hw/audio.a2dp.default.so:system/lib/hw/audio.a2dp.default.so
 
 #Add touchscreen config file
 PRODUCT_COPY_FILES += \
@@ -123,6 +121,10 @@ PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
     frameworks/base/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml
 
+# Prebuilt camera HAL for now.
+PRODUCT_COPY_FILES += \
+    device/htc/shooter/prebuilt/system/lib/hw/camera.default.so:system/lib/hw/camera.default.so
+
 # CameraHal
 PRODUCT_PACKAGES += \
    libcamera \
@@ -131,10 +133,10 @@ PRODUCT_PACKAGES += \
 # Audio try default
 PRODUCT_PACKAGES += \
     libaudioutils \
-    libtinyalsa \
-    audio.a2dp.default \
+    audio.a2dp.default \
     audio_policy.msm8660 \
-    audio.primary.msm8660
+    audio.primary.msm8660 \
+    libtinyalsa \
 
 # Video
 PRODUCT_PACKAGES += \
@@ -171,39 +173,6 @@ PRODUCT_COPY_FILES += \
     device/htc/shooter/prebuilt/system/usr/keylayout/shooter-keypad.kl:system/usr/keylayout/shooter-keypad.kl \
     device/htc/shooter/prebuilt/system/usr/keylayout/BT_HID.kl:system/usr/keylayout/BT_HID.kl \
     device/htc/shooter/prebuilt/system/usr/keylayout/AVRCP.kl:system/usr/keylayout/AVRCP.kl
-# Firmware
-PRODUCT_COPY_FILES += \
-    device/htc/shooter/prebuilt/system/etc/firmware/BCM4329B1_002.002.023.0589.0632.hcd:system/etc/firmware/BCM4329B1_002.002.023.0589.0632.hcd \
-    device/htc/shooter/prebuilt/system/etc/firmware/fw_bcm4329.bin:system/etc/firmware/fw_bcm4329.bin \
-    device/htc/shooter/prebuilt/system/etc/firmware/fw_bcm4329_apsta.bin:system/etc/firmware/fw_bcm4329_apsta.bin \
-    device/htc/shooter/prebuilt/system/etc/firmware/vidc_1080p.fw:system/etc/firmware/vidc_1080p.fw \
-    device/htc/shooter/prebuilt/system/etc/firmware/leia_pfp_470.fw:system/etc/firmware/leia_pfp_470.fw \
-    device/htc/shooter/prebuilt/system/etc/firmware/leia_pm4_470.fw:system/etc/firmware/leia_pm4_470.fw
-    
-# Audio DSP Profiles
-PRODUCT_COPY_FILES += \
-    device/htc/shooter/prebuilt/system/etc/AIC3254_REG.csv:system/etc/AIC3254_REG.csv \
-    device/htc/shooter/prebuilt/system/etc/AIC3254_REG_DualMic.csv:system/etc/AIC3254_REG_DualMic.csv \
-    device/htc/shooter/prebuilt/system/etc/AdieHWCodec.csv:system/etc/AdieHWCodec.csv \
-    device/htc/shooter/prebuilt/system/etc/AudioBTID.csv:system/etc/AudioBTID.csv \
-    device/htc/shooter/prebuilt/system/etc/CodecDSPID.txt:system/etc/CodecDSPID.txt \
-    device/htc/shooter/prebuilt/system/etc/CodecDSPID_WB.txt:system/etc/CodecDSPID_WB.txt \
-    device/htc/shooter/prebuilt/system/etc/TPA2051_CFG.csv:system/etc/TPA2051_CFG.csv \
-    device/htc/shooter/prebuilt/system/etc/TPA2051_CFG_XC.csv:system/etc/TPA2051_CFG_XC.csv \
-    device/htc/shooter/prebuilt/system/etc/soundimage/Sound_Original_Recording.txt:system/etc/soundimage/Sound_Original_Recording.txt \
-    device/htc/shooter/prebuilt/system/etc/soundimage/Sound_Original_SPK.txt:system/etc/soundimage/Sound_Original_SPK.txt \
-    device/htc/shooter/prebuilt/system/etc/soundimage/Sound_Original.txt:system/etc/soundimage/Sound_Original.txt \
-    device/htc/shooter/prebuilt/system/etc/soundimage/Sound_Phone_Original_HP.txt:system/etc/soundimage/Sound_Phone_Original_HP.txt \
-    device/htc/shooter/prebuilt/system/etc/soundimage/Sound_Phone_Original_REC.txt:system/etc/soundimage/Sound_Phone_Original_REC.txt \
-    device/htc/shooter/prebuilt/system/etc/soundimage/Sound_Phone_Original_SPK.txt:system/etc/soundimage/Sound_Phone_Original_SPK.txt \
-    device/htc/shooter/prebuilt/system/etc/soundimage/Sound_Rec_Landscape.txt:system/etc/soundimage/Sound_Rec_Landscape.txt \
-    device/htc/shooter/prebuilt/system/etc/soundimage/Sound_Rec_Portrait.txt:system/etc/soundimage/Sound_Rec_Portrait.txt \
-    device/htc/shooter/prebuilt/system/etc/soundimage/Sound_Recording.txt:system/etc/soundimage/Sound_Recording.txt \
-    device/htc/shooter/prebuilt/system/etc/soundimage/srs_geq10.cfg:system/etc/soundimage/srs_geq10.cfg \
-    device/htc/shooter/prebuilt/system/etc/soundimage/srsfx_trumedia_51.cfg:system/etc/soundimage/srsfx_trumedia_51.cfg \
-    device/htc/shooter/prebuilt/system/etc/soundimage/srsfx_trumedia_movie.cfg:system/etc/soundimage/srsfx_trumedia_movie.cfg \
-    device/htc/shooter/prebuilt/system/etc/soundimage/srsfx_trumedia_music.cfg:system/etc/soundimage/srsfx_trumedia_music.cfg \
-    device/htc/shooter/prebuilt/system/bin/snd3254:system/bin/snd3254
 
 # Kernel Modules
 PRODUCT_COPY_FILES += $(shell \
