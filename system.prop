@@ -5,8 +5,7 @@ debug.fb.rgb565 = 0
 debug.sf.hw=1
 debug.composition.type=c2d
 ro.sf.compbypass.enable=0
-dev.pm.dyn_samplingrate=1
-debug.enabletr=true
+debug.enabletr=false
 debug.qctwa.statusbar = 1
 debug.qctwa.preservebuf = 1
 
@@ -41,7 +40,7 @@ ro.ril.set.mtu1472 = 1
 
 net.tcp.buffersize.wimax = 4096,221184,524288,4096,16384,110208
 
-wifi.interface=wlan0
+wifi.interface=eth0
 wifi.supplicant_scan_interval=15
 ro.com.google.locationfeatures = 1
 
