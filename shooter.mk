@@ -43,10 +43,6 @@ PRODUCT_MANUFACTURER := HTC
 
 #PRODUCT_MOTD :="Welcome to ics-deck"
 
-# USB
-ADDITIONAL_DEFAULT_PROPERTIES += \
-     persist.sys.usb.config=mass_storage
-
 PRODUCT_AAPT_CONFIG := normal hdpi
 PRODUCT_AAPT_PREF_CONFIG := hdpi
 
@@ -74,6 +70,25 @@ PRODUCT_COPY_FILES += \
     device/htc/shooter/prebuilt/system/usr/keylayout/atmel-touchscreen.kl:system/usr/keylayout/atmel-touchscreen.kl \
     device/htc/shooter/prebuilt/system/usr/idc/shooter-keypad.idc:system/usr/idc/shooter-keypad.idc
 
+# Firmware
+PRODUCT_COPY_FILES += \
+    device/htc/shooter/prebuilt/system/etc/firmware/BCM4329B1_002.002.023.0589.0632.hcd:system/etc/firmware/BCM4329B1_002.002.023.0589.0632.hcd \
+    device/htc/shooter/prebuilt/system/etc/firmware/default_bak.acdb:system/etc/firmware/default_bak.acdb \
+    device/htc/shooter/prebuilt/system/etc/firmware/fw_bcm4329_apsta.bin:system/etc/firmware/fw_bcm4329_apsta.bin \
+    device/htc/shooter/prebuilt/system/etc/firmware/fw_bcm4329.bin:system/etc/firmware/fw_bcm4329.bin \
+    device/htc/shooter/prebuilt/system/etc/firmware/leia_pfp_470.fw:system/etc/firmware/leia_pfp_470.fw \
+    device/htc/shooter/prebuilt/system/etc/firmware/leia_pm4_470.fw:system/etc/firmware/leia_pm4_470.fw \
+    device/htc/shooter/prebuilt/system/etc/firmware/vidc_1080p.fw:system/etc/firmware/vidc_1080p.fw
+
+# Sound
+PRODUCT_COPY_FILES += \
+    device/htc/shooter/prebuilt/system/etc/firmware/BCM4329B1_002.002.023.0589.0632.hcd:system/etc/firmware/BCM4329B1_002.002.023.0589.0632.hcd \
+    device/htc/shooter/prebuilt/system/etc/firmware/default_bak.acdb:system/etc/firmware/default_bak.acdb \
+    device/htc/shooter/prebuilt/system/etc/firmware/fw_bcm4329_apsta.bin:system/etc/firmware/fw_bcm4329_apsta.bin \
+    device/htc/shooter/prebuilt/system/etc/firmware/fw_bcm4329.bin:system/etc/firmware/fw_bcm4329.bin \
+    device/htc/shooter/prebuilt/system/etc/firmware/leia_pfp_470.fw:system/etc/firmware/leia_pfp_470.fw \
+    device/htc/shooter/prebuilt/system/etc/firmware/leia_pm4_470.fw:system/etc/firmware/leia_pm4_470.fw \
+    device/htc/shooter/prebuilt/system/etc/firmware/vidc_1080p.fw:system/etc/firmware/vidc_1080p.fw
 
 ## (2) Also get non-open-source GSM-specific aspects if available
 $(call inherit-product-if-exists, vendor/htc/shooter/shooter-vendor.mk)
@@ -117,9 +132,6 @@ PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
     frameworks/base/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml
 
-# Prebuilt camera HAL for now.
-PRODUCT_COPY_FILES += \
-    device/htc/shooter/prebuilt/system/lib/hw/camera.default.so:system/lib/hw/camera.default.so
 
 # CameraHal
 PRODUCT_PACKAGES += \
