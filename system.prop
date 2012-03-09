@@ -3,7 +3,7 @@
 
 debug.enabletr=false
 ro.sf.compbypass.enable=0
-debug.composition.type=mdp
+debug.composition.type=c2d
 debug.qctwa.statusbar = 1
 debug.qctwa.preservebuf = 1
 
