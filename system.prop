@@ -2,7 +2,8 @@
 #
 
 debug.enabletr=false
-debug.composition.type=c2d
+ro.sf.compbypass.enable=0
+debug.composition.type=mdp
 debug.qctwa.statusbar = 1
 debug.qctwa.preservebuf = 1
 
@@ -61,3 +62,6 @@ ro.emmc = 1
 
 # System property for cabl
 ro.qualcomm.cabl=1
+
+persist.sys.usb.config=mass_storage,adb
+persist.service.adb.enable=1

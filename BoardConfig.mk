@@ -44,7 +44,7 @@ BOARD_USES_AUDIO_LEGACY            := false
 BOARD_USES_GENERIC_AUDIO           := false
 BOARD_USES_QCOM_AUDIO_VOIPMUTE := true
 BOARD_USES_QCOM_AUDIO_RESETALL := true
-BOARD_USES_QCOM_AUDIO_SPEECH := true
+# BOARD_USES_QCOM_AUDIO_SPEECH := true
 
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
@@ -128,4 +128,4 @@ BOARD_HAS_NO_SELECT_BUTTON := true
 BOARD_CUSTOM_GRAPHICS:= ../../../device/htc/shooter/graphics.c
 
 # Usb
-TARGET_USE_CUSTOM_LUN_FILE_PATH    := /sys/class/android_usb/android0/f_mass_storage/lun0/file
+TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storage/lun0/file
