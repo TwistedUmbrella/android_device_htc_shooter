@@ -61,7 +61,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 PRODUCT_COPY_FILES += \
     device/htc/shooter/prebuilt/root/init.shooter.rc:root/init.shooter.rc \
-    device/htc/shooter/prebuilt/root/init.shooter.usb.rc:root/init.shooter.usb.rc \
+    device/htc/shooter/prebuilt/root/init.msm8660.usb.rc:root/init.msm8660.usb.rc \
     device/htc/shooter/prebuilt/root/ueventd.shooter.rc:root/ueventd.shooter.rc
 
 #Add touchscreen config file
