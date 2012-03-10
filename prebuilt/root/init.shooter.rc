@@ -1,5 +1,10 @@
 import init.msm8660.usb.rc
 
+on early-init
+    export EXTERNAL_STORAGE /mnt/sdcard
+    mkdir /mnt/sdcard 0000 system system
+    symlink /mnt/sdcard /sdcard
+
 on boot
     mount debugfs /sys/kernel/debug /sys/kernel/debug
 
@@ -15,11 +20,6 @@ on early-fs
     mount ext4 /dev/block/mmcblk0p28 /devlog wait noatime nosuid nodev data=ordered noauto_da_alloc
 
     devwait /dev/block/mmcblk0p18
-
-    export EXTERNAL_STORAGE /mnt/sdcard
-    mkdir /mnt/sdcard 0000 system system
-    # for backwards compatibility
-    symlink /mnt/sdcard /sdcard
 
 on fs
     rm /vendor
@@ -205,7 +205,7 @@ service bugreport /system/bin/dumpstate -d -v -o /sdcard/bugreports/bugreport
     keycodes 114 115
 
 service hciattach /system/bin/logwrapper /system/bin/brcm_patchram_plus --enable_hci \
-    --baudrate 3000000 --patchram /etc/firmware/BCM4329B1_002.002.023.0589.0632.hcd /dev/ttyHS0
+    --baudrate 3000000 --patchram /etc/firmware/bcm4329.hcd /dev/ttyHS0
     user bluetooth
     group bluetooth net_bt_admin
     disabled
