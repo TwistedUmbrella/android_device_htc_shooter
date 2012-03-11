@@ -61,7 +61,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 PRODUCT_COPY_FILES += \
     device/htc/shooter/prebuilt/root/init.shooter.rc:root/init.shooter.rc \
-    device/htc/shooter/prebuilt/root/init.msm8660.usb.rc:root/init.msm8660.usb.rc \
     device/htc/shooter/prebuilt/root/ueventd.shooter.rc:root/ueventd.shooter.rc
 
 #Add touchscreen config file
@@ -69,12 +68,6 @@ PRODUCT_COPY_FILES += \
     device/htc/shooter/prebuilt/system/usr/idc/atmel-touchscreen.idc:system/usr/idc/atmel-touchscreen.idc \
     device/htc/shooter/prebuilt/system/usr/keylayout/atmel-touchscreen.kl:system/usr/keylayout/atmel-touchscreen.kl \
     device/htc/shooter/prebuilt/system/usr/idc/shooter-keypad.idc:system/usr/idc/shooter-keypad.idc
-
-# Firmware
-PRODUCT_COPY_FILES += \
-    device/htc/shooter/prebuilt/system/etc/firmware/bcm4329.hcd:system/etc/firmware/bcm4329.hcd \
-    device/htc/shooter/prebuilt/system/etc/firmware/fw_bcm4329_apsta.bin:system/etc/firmware/fw_bcm4329_apsta.bin \
-    device/htc/shooter/prebuilt/system/etc/firmware/fw_bcm4329.bin:system/etc/firmware/fw_bcm4329.bin
 
 ## (2) Also get non-open-source GSM-specific aspects if available
 $(call inherit-product-if-exists, vendor/htc/shooter/shooter-vendor.mk)
@@ -124,34 +117,8 @@ PRODUCT_PACKAGES += \
    libcamera \
    Camera
 
-# Audio try default
-PRODUCT_PACKAGES += \
-    libaudioutils \
-    audio.a2dp.default \
-    audio_policy.msm8660 \
-    audio.primary.msm8660 \
-    libtinyalsa \
-
-# Video
-PRODUCT_PACKAGES += \
-    copybit.msm8660 \
-    gralloc.msm8660 \
-    hwcomposer.msm8660 \
-    overlay.msm8660
-
-# QCOM OMX
-PRODUCT_PACKAGES += \
-    libstagefrighthw \
-    libOmxCore \
-    libmm-omxcore \
-    libdivxdrmdecrypt \
-    libOmxVenc \
-    libOmxVdec
-
 # Misc
 PRODUCT_PACKAGES += \
-    com.android.future.usb.accessory \
-    librs_jni \
     gps.shooter \
     sensors.shooter \
     lights.shooter
@@ -193,6 +160,9 @@ endif
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_KERNEL):kernel
+
+# common msm8660 configs
+$(call inherit-product, device/htc/msm8660-common/msm8660.mk)
 
 # media profiles and capabilities spec
 $(call inherit-product, device/htc/shooter/media_a1026.mk)
