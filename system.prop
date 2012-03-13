@@ -1,16 +1,24 @@
 # system.prop for shooter
 #
 
+# Qualcomm Display
+com.qc.hardware=true
 debug.enabletr=true
-ro.sf.compbypass.enable=0
+com.qc.hdmi_out=false
+ro.sf.compbypass.enable=1
 debug.composition.type=c2d
 dev.pm.dyn_samplingrate=1
 debug.qctwa.statusbar = 1
 debug.qctwa.preservebuf = 1
 
-#cm qcom build lub
-com.qc.hardware=true
-com.qc.hdmi_out=false
+# Android Display
+windowsmgr.max_events_per_sec=275
+ro.config.disable_hw_accel=false
+debug.fb.rgb565=0
+debug.sf.hw=1
+
+ro.sf.lcd_density=240
+qemu.sf.lcd_density=160
 
 # board has 3D panel
 #persist.user.panel3D = 1
