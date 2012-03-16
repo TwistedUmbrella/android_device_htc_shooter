@@ -118,6 +118,10 @@ PRODUCT_COPY_FILES += \
     device/htc/shooter/prebuilt/system/usr/keylayout/BT_HID.kl:system/usr/keylayout/BT_HID.kl \
     device/htc/shooter/prebuilt/system/usr/keylayout/AVRCP.kl:system/usr/keylayout/AVRCP.kl
 
+# Firmware
+PRODUCT_COPY_FILES += \
+    device/htc/shooter/prebuilt/system/etc/firmware/default_bak.acdb:/system/etc/firmware/default_bak.acdb
+
 # Kernel Modules
 PRODUCT_COPY_FILES += $(shell \
     find device/htc/shooter/prebuilt/system/lib/modules -name '*.ko' \
