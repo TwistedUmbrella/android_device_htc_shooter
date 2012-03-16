@@ -17,10 +17,6 @@
 # Setup device specific product configuration.
 #
 
-# Inherit Vendor Files
-$(call inherit-product-if-exists, vendor/twisted/twisted-vendor.mk)
-$(call inherit-product-if-exists, vendor/twisted/google-vendor.mk)
-
 ## (2) Also get non-open-source GSM-specific aspects if available
 $(call inherit-product-if-exists, vendor/htc/shooter/shooter-vendor.mk)
 
