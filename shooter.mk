@@ -94,12 +94,6 @@ DEVICE_PACKAGE_OVERLAYS += device/htc/shooter/overlay
 PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/android.hardware.telephony.cdma.xml:system/etc/permissions/android.hardware.telephony.cdma.xml
 
-
-# CameraHal
-PRODUCT_PACKAGES += \
-   libcamera \
-   Camera
-
 # Misc
 PRODUCT_PACKAGES += \
     gps.shooter \
