@@ -40,10 +40,10 @@ on early-fs
     symlink /vendor/firmware/misc/modem.b01 /vendor/firmware/modem.b01
     symlink /vendor/firmware/misc/modem.b00 /vendor/firmware/modem.b00
     symlink /vendor/firmware/misc/modem.mdt /vendor/firmware/modem.mdt
-    mount ext4 /dev/block/mmcblk0p23 /system wait ro data=ordered noauto_da_alloc
-    mount ext4 /dev/block/mmcblk0p24 /data wait noatime nosuid nodev data=ordered noauto_da_alloc
-    mount ext4 /dev/block/mmcblk0p25 /cache wait noatime nosuid nodev data=ordered noauto_da_alloc
-    mount ext4 /dev/block/mmcblk0p28 /devlog wait noatime nosuid nodev data=ordered noauto_da_alloc
+    mount ext4 /dev/block/mmcblk0p23 /system wait ro noatime nodiratime barrier=0 nouser_xattr
+    mount ext4 /dev/block/mmcblk0p24 /data wait noatime nodiratime nosuid nodev barrier=0 noauto_da_alloc nouser_xattr
+    mount ext4 /dev/block/mmcblk0p25 /cache wait noatime nodiratime nosuid nodev barrier=0 nouser_xattr
+    mount ext4 /dev/block/mmcblk0p28 /devlog wait noatime nodiratime nosuid nodev barrier=0 nouser_xattr
 
     # double check the perms and set owner
     chown root root /devlog
@@ -156,6 +156,10 @@ on init
 
 on boot
     mount debugfs /sys/kernel/debug /sys/kernel/debug
+
+    # Increase readahead buffers on MMC devices
+    write /sys/block/mmcblk0/bdi/read_ahead_kb 1024
+    write /sys/block/mmcblk1/bdi/read_ahead_kb 1024
 
 service post-boot /system/bin/sh /system/etc/init.post_boot.sh
     user root

@@ -18,13 +18,12 @@ debug.fb.rgb565=0
 debug.sf.hw=1
 
 ro.sf.lcd_density=240
-qemu.sf.lcd_density=160
 
 # Stagefright
 sys.media.vdec.sw=1
 
 # 3D Panel
-persist.user.panel3D = 1
+persist.user.panel3D=1
 
 # Proximity
 gsm.proximity.enable=true
