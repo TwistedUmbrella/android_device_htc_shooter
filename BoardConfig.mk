@@ -22,7 +22,6 @@ BOARD_VENDOR_QCOM_GPS_LOC_API_AMSS_VERSION := 50000
 WIFI_DRIVER_MODULE_ARG := "firmware_path=/system/etc/firmware/fw_bcm4329.bin nvram_path=/proc/calibration iface_name=wlan"
 
 TARGET_HARDWARE_3D := true
-COMMON_GLOBAL_CFLAGS += -DSCREEN_RELEASE
 
 TARGET_USE_SCORPION_BIONIC_OPTIMIZATION := true
 
