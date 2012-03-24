@@ -1,11 +1,9 @@
 import init.msm8660.usb.rc
-import init.htc.kernel.rc
 
 on early-init
-	export EXTERNAL_STORAGE /mnt/sdcard
-	mkdir /mnt/sdcard 0000 system system
-	# for backwards compatibility
-	symlink /mnt/sdcard /sdcard
+    export EXTERNAL_STORAGE /mnt/sdcard
+    mkdir /mnt/sdcard 0000 system system
+    symlink /mnt/sdcard /sdcard
 
 on early-fs
     mkdir /system
@@ -13,12 +11,18 @@ on early-fs
     mkdir /cache 0770 system cache
     mkdir /devlog 0700 root root
 
-    #8x60: firmware
+    mount ext4 /dev/block/mmcblk0p23 /system wait ro data=ordered noauto_da_alloc
+    mount ext4 /dev/block/mmcblk0p24 /data wait noatime nosuid nodev data=ordered noauto_da_alloc
+    mount ext4 /dev/block/mmcblk0p25 /cache wait noatime nosuid nodev data=ordered noauto_da_alloc
+    mount ext4 /dev/block/mmcblk0p28 /devlog wait noatime nosuid nodev data=ordered noauto_da_alloc
+
+    devwait /dev/block/mmcblk0p18
+
+on init
     rm /vendor
     mkdir /vendor 0771 system system
     mkdir /vendor/firmware 0771 system system
     mkdir /vendor/firmware/misc 0771 system system
-    wait /dev/block/mmcblk0p18
     mount vfat /dev/block/mmcblk0p18 /vendor/firmware/misc ro shortname=lower
     symlink /vendor/firmware/misc/q6.b07 /vendor/firmware/q6.b07
     symlink /vendor/firmware/misc/q6.b06 /vendor/firmware/q6.b06
@@ -40,10 +44,6 @@ on early-fs
     symlink /vendor/firmware/misc/modem.b01 /vendor/firmware/modem.b01
     symlink /vendor/firmware/misc/modem.b00 /vendor/firmware/modem.b00
     symlink /vendor/firmware/misc/modem.mdt /vendor/firmware/modem.mdt
-    mount ext4 /dev/block/mmcblk0p23 /system wait ro noatime nodiratime barrier=0 nouser_xattr
-    mount ext4 /dev/block/mmcblk0p24 /data wait noatime nodiratime nosuid nodev barrier=0 noauto_da_alloc nouser_xattr
-    mount ext4 /dev/block/mmcblk0p25 /cache wait noatime nodiratime nosuid nodev barrier=0 nouser_xattr
-    mount ext4 /dev/block/mmcblk0p28 /devlog wait noatime nodiratime nosuid nodev barrier=0 nouser_xattr
 
     # double check the perms and set owner
     chown root root /devlog
@@ -78,7 +78,6 @@ on early-fs
     mkdir /data/wimax/ 0770  system system
     mkdir /data/wimax/log 0770  system system
 
-on init
     # bluetooth power up/down interface
     chown bluetooth bluetooth /sys/class/rfkill/rfkill0/type
     chown bluetooth bluetooth /sys/class/rfkill/rfkill0/state
