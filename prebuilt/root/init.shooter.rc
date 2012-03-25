@@ -128,15 +128,6 @@ on init
 	chown system system /sys/class/optical_sensors/proximity/ps_led
 	chown system system /sys/class/optical_sensors/proximity/ps_test_mode
 
-    # for CM performance
-    chown root system /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_frequencies
-    chown root system /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_governors
-    chown root system /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq
-    chown root system /sys/devices/system/cpu/cpu1/cpufreq/scaling_available_frequencies
-    chown root system /sys/devices/system/cpu/cpu1/cpufreq/scaling_available_governors
-    chown root system /sys/devices/system/cpu/cpu1/cpufreq/scaling_cur_freq
-    chown system /sys/devices/system/cpu/cpufreq/ondemand/io_is_busy
-
 	# for simlock
 	chown radio radio /dev/simlock
 	chmod 0660 /dev/simlock
@@ -160,6 +151,15 @@ on init
 on boot
     mount debugfs /sys/kernel/debug /sys/kernel/debug
 
+    # for CM performance
+    chown root system /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_frequencies
+    chown root system /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_governors
+    chown root system /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq
+    chown root system /sys/devices/system/cpu/cpu1/cpufreq/scaling_available_frequencies
+    chown root system /sys/devices/system/cpu/cpu1/cpufreq/scaling_available_governors
+    chown root system /sys/devices/system/cpu/cpu1/cpufreq/scaling_cur_freq
+    chown system /sys/devices/system/cpu/cpufreq/ondemand/io_is_busy
+
     # Increase readahead buffers on MMC devices
     write /sys/block/mmcblk0/bdi/read_ahead_kb 1024
     write /sys/block/mmcblk1/bdi/read_ahead_kb 1024
@@ -182,7 +182,8 @@ service post-boot /system/bin/sh /system/etc/init.post_boot.sh
 service load-modem /system/bin/load-modem.sh
     oneshot
 
-service wpa_supplicant /system/bin/wpa_supplicant -Dwext -iwlan0 -c/data/misc/wifi/wpa_supplicant.conf
+service wpa_supplicant /system/bin/wpa_supplicant \
+    -Dwext -iwlan0 -c/data/misc/wifi/wpa_supplicant.conf
     class main
     socket wpa_wlan0 dgram 660 wifi wifi
     disabled
