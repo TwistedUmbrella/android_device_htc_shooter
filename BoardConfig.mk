@@ -19,7 +19,7 @@ BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := shooter
 BOARD_VENDOR_QCOM_GPS_LOC_API_AMSS_VERSION := 50000
 
 # Wifi Specific Defines
-WIFI_DRIVER_MODULE_ARG := "firmware_path=/system/etc/firmware/fw_bcm4329.bin nvram_path=/proc/calibration iface_name=wlan"
+WIFI_DRIVER_MODULE_ARG := "firmware_path=/vendor/firmware/fw_bcm4329.bin nvram_path=/proc/calibration iface_name=wlan"
 
 TARGET_HARDWARE_3D := true
 
