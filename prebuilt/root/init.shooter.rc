@@ -16,13 +16,11 @@ on early-fs
     mount ext4 /dev/block/mmcblk0p25 /cache wait noatime nosuid nodev data=ordered noauto_da_alloc
     mount ext4 /dev/block/mmcblk0p28 /devlog wait noatime nosuid nodev data=ordered noauto_da_alloc
 
-    devwait /dev/block/mmcblk0p18
-
-on init
     rm /vendor
     mkdir /vendor 0771 system system
     mkdir /vendor/firmware 0771 system system
     mkdir /vendor/firmware/misc 0771 system system
+    wait /dev/block/mmcblk0p18
     mount vfat /dev/block/mmcblk0p18 /vendor/firmware/misc ro shortname=lower
     symlink /vendor/firmware/misc/q6.b07 /vendor/firmware/q6.b07
     symlink /vendor/firmware/misc/q6.b06 /vendor/firmware/q6.b06
@@ -45,16 +43,14 @@ on init
     symlink /vendor/firmware/misc/modem.b00 /vendor/firmware/modem.b00
     symlink /vendor/firmware/misc/modem.mdt /vendor/firmware/modem.mdt
 
+on init
     # double check the perms and set owner
     chown root root /devlog
     chmod 0700 /devlog
 
 	mount rootfs rootfs / remount
 
-    #for CIQ ipc
-    mkdir /app-cache/ciq 0711 root system
-    mkdir /app-cache/ciq/socket 0777 root system
-
+on boot
     # for Invense MPU3050
     chmod 0664 /dev/mpu
     chmod 0664 /dev/mpuirq
@@ -86,6 +82,16 @@ on init
     # bluetooth MAC address programming
     chown bluetooth bluetooth /sys/module/htc_bdaddress/parameters/bdaddr
     setprop ro.bt.bdaddr_path /sys/module/htc_bdaddress/parameters/bdaddr
+
+# allow system to modify ksm control files
+    chown root system /sys/kernel/mm/ksm/pages_to_scan
+    chmod 0664 /sys/kernel/mm/ksm/pages_to_scan
+    chown root system /sys/kernel/mm/ksm/sleep_millisecs
+    chmod 0664 /sys/kernel/mm/ksm/sleep_millisecs
+    chown root system /sys/kernel/mm/ksm/run
+    chmod 0664 /sys/kernel/mm/ksm/run
+    write /sys/kernel/mm/ksm/sleep_millisecs 1500
+    write /sys/kernel/mm/ksm/pages_to_scan 256
 
     # Permissions for Liblights.
     chown system system /sys/class/leds/green/brightness
@@ -144,31 +150,11 @@ on init
     write /sys/module/lowmemorykiller/parameters/minfile 2048,3072,4096,6144,8192,12288
     write /sys/module/lowmemorykiller/parameters/check_filepages 1
 
-on boot
     mount debugfs /sys/kernel/debug /sys/kernel/debug
-
-    # for CM performance
-    chown root system /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_frequencies
-    chown root system /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_governors
-    chown root system /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq
-    chown root system /sys/devices/system/cpu/cpu1/cpufreq/scaling_available_frequencies
-    chown root system /sys/devices/system/cpu/cpu1/cpufreq/scaling_available_governors
-    chown root system /sys/devices/system/cpu/cpu1/cpufreq/scaling_cur_freq
-    chown system /sys/devices/system/cpu/cpufreq/ondemand/io_is_busy
 
     # Increase readahead buffers on MMC devices
     write /sys/block/mmcblk0/bdi/read_ahead_kb 1024
     write /sys/block/mmcblk1/bdi/read_ahead_kb 1024
-
-# allow system to modify ksm control files
-    chown root system /sys/kernel/mm/ksm/pages_to_scan
-    chmod 0664 /sys/kernel/mm/ksm/pages_to_scan
-    chown root system /sys/kernel/mm/ksm/sleep_millisecs
-    chmod 0664 /sys/kernel/mm/ksm/sleep_millisecs
-    chown root system /sys/kernel/mm/ksm/run
-    chmod 0664 /sys/kernel/mm/ksm/run
-    write /sys/kernel/mm/ksm/sleep_millisecs 1500
-    write /sys/kernel/mm/ksm/pages_to_scan 256
 
 service post-boot /system/bin/sh /system/etc/init.post_boot.sh
     user root
