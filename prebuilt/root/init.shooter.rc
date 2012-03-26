@@ -45,10 +45,6 @@ on init
     symlink /vendor/firmware/misc/modem.b00 /vendor/firmware/modem.b00
     symlink /vendor/firmware/misc/modem.mdt /vendor/firmware/modem.mdt
 
-    symlink /system/vendor/firmware/fw_bcm4329.bin /vendor/firmware/fw_bcm4329.bin
-    symlink /system/vendor/firmware/fw_bcm4329_apsta.bin /vendor/firmware/fw_bcm4329_apsta.bin
-    symlink /system/vendor/firmware/BCM4329B1_002.002.023.0589.0632.hcd /vendor/firmware/BCM4329B1_002.002.023.0589.0632.hcd
-
     # double check the perms and set owner
     chown root root /devlog
     chmod 0700 /devlog
@@ -213,7 +209,7 @@ service bugreport /system/bin/dumpstate -d -v -o /sdcard/bugreports/bugreport
     keycodes 114 115
 
 service hciattach /system/bin/brcm_patchram_plus --enable_hci \
-    --baudrate 3000000 --patchram /vendor/firmware/BCM4329B1_002.002.023.0589.0632.hcd /dev/ttyHS0
+    --baudrate 3000000 --patchram /etc/firmware/BCM4329B1_002.002.023.0589.0632.hcd /dev/ttyHS0
     user bluetooth
     group bluetooth net_bt_admin
     disabled
