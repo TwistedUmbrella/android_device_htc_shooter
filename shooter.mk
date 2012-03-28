@@ -19,7 +19,7 @@
 
 ## (2) Also get non-open-source GSM-specific aspects if available
 $(call inherit-product-if-exists, vendor/htc/shooter/shooter-vendor.mk)
-$(call inherit-product-if-exists, vendor/htc/shooter/shooter-camera.mk)
+$(call inherit-product-if-exists, vendor/htc/shooter/shooter-wrapper.mk)
 
 # Inherit Language Files
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
