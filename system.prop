@@ -76,3 +76,4 @@ ro.qualcomm.cabl=1
 
 persist.sys.usb.config=mass_storage,adb
 persist.service.adb.enable=1
+persist.sys.root_access=3
