@@ -9,12 +9,17 @@
 /dev/msm_rotator        0660    system      graphics
 /dev/pmem               0660    system      graphics
 /dev/genlock            0666    root        root
+/dev/graphics/*         0660    root        graphics
 
 # camera
 /dev/gemini0            0660    system      system
 /dev/msm_camera/*       0660    system      camera
 /dev/video*             0660    system      camera
 /dev/pmem_smipool*      0660    system      camera
+/dev/msm_vidc*          0660    system      graphics
+/dev/msm_vidc_reg       0660    system      audio
+/dev/msm_vidc_dec       0660    system      audio
+/dev/msm_vidc_enc       0660    system      audio
 
 # sensors
 /dev/akm8975_daemon     0640    compass     system

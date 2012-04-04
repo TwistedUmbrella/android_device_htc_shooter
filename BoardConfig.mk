@@ -24,7 +24,9 @@ TARGET_USE_SCORPION_BIONIC_OPTIMIZATION := true
 
 # BOARD_CAMERA_USE_GETBUFFERINFO := true
 
-BOARD_USE_NEW_LIBRIL_HTC := true
+# BOARD_USE_NEW_LIBRIL_HTC := true
+TARGET_PROVIDES_LIBRIL := vendor/htc/shooter/proprietary/libril.so
+
 BOARD_HAVE_SQN_WIMAX := true
 
 BOARD_KERNEL_CMDLINE := no_console_suspend=1
