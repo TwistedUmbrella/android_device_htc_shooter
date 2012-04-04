@@ -381,6 +381,23 @@ on property:ro.qualcomm.cabl=1
 on property:ro.qualcomm.cabl=0
     stop abld
 
+# for USB internet sharing
+service udhcpd /system/bin/udhcpd
+	disabled
+	oneshot
+
+service netsharing_on /system/bin/netsharing net on
+	disabled
+	oneshot
+
+service netsharing_off /system/bin/netsharing net off
+	disabled
+	oneshot
+
+service netsharing_pass /system/bin/netsharing net_pass on
+	disabled
+	oneshot
+
 service qmuxd /system/bin/qmuxd
     class main
     user radio
