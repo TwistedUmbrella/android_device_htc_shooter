@@ -14,9 +14,8 @@
 # camera
 /dev/gemini0            0660    system      camera
 /dev/msm_camera/*       0660    system      camera
-/dev/msm_vidc_reg       0660    system      audio
-/dev/msm_vidc_dec       0660    system      audio
-/dev/msm_vidc_enc       0660    system      audio
+/dev/video*             0660    system      camera
+/dev/pmem_smipool*      0660    system      audio
 
 # sensors
 /dev/akm8975_daemon     0640    compass     system
@@ -52,7 +51,6 @@
 /dev/msm_aac_in         0660    system      audio
 /dev/msm_amrnb_in       0640    system      audio
 
-/dev/rfkill             0660    root        wifi
 /dev/ttyHS0             0600    bluetooth   bluetooth
 /dev/ttyHSUSB0          0600    system      system
 /dev/ttySA0             0600    system      system
