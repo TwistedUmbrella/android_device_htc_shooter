@@ -26,9 +26,9 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 PRODUCT_AAPT_CONFIG := normal hdpi
 PRODUCT_AAPT_PREF_CONFIG := hdpi
 
-# Device GPS Properties
+# The gps config appropriate for this device
 PRODUCT_COPY_FILES += \
-    device/htc/common/system/etc/gps.conf:system/etc/gps.conf
+    device/htc/shooter/prebuilt/system/etc/gps.conf:system/etc/gps.conf
 
 ## (1) First, the most specific values, i.e. the aspects that are specific to GSM
 PRODUCT_PROPERTY_OVERRIDES += \
