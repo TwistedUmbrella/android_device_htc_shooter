@@ -55,7 +55,6 @@ on init
 
     mount rootfs rootfs / remount
 
-on boot
     # for Invense MPU3050
     chmod 0664 /dev/mpu
     chmod 0664 /dev/mpuirq
@@ -88,7 +87,7 @@ on boot
     chown bluetooth bluetooth /sys/module/htc_bdaddress/parameters/bdaddr
     setprop ro.bt.bdaddr_path /sys/module/htc_bdaddress/parameters/bdaddr
 
-# allow system to modify ksm control files
+    # allow system to modify ksm control files
     chown root system /sys/kernel/mm/ksm/pages_to_scan
     chmod 0664 /sys/kernel/mm/ksm/pages_to_scan
     chown root system /sys/kernel/mm/ksm/sleep_millisecs
@@ -155,11 +154,13 @@ on boot
     write /sys/module/lowmemorykiller/parameters/minfile 2048,3072,4096,6144,8192,12288
     write /sys/module/lowmemorykiller/parameters/check_filepages 1
 
-    mount debugfs /sys/kernel/debug /sys/kernel/debug
-
     # Increase readahead buffers on MMC devices
     write /sys/block/mmcblk0/bdi/read_ahead_kb 1024
     write /sys/block/mmcblk1/bdi/read_ahead_kb 1024
+
+on boot
+
+    mount debugfs /sys/kernel/debug /sys/kernel/debug
 
 service post-boot /system/bin/sh /system/etc/init.post_boot.sh
     user root
