@@ -212,6 +212,8 @@ service rmt_storage /system/bin/rmt_storage /dev/block/mmcblk0p26 /dev/block/mmc
 
 service qmuxd /system/bin/qmuxd
     class main
+    user radio
+    group system radio inet
 
 service netmgrd /system/bin/netmgrd
     class main
@@ -386,11 +388,3 @@ service netsharing_off /system/bin/netsharing net off
 service netsharing_pass /system/bin/netsharing net_pass on
 	disabled
 	oneshot
-
-service qmuxd /system/bin/qmuxd
-    class main
-    user radio
-    group system radio inet
-
-service netmgrd /system/bin/netmgrd
-    class main
