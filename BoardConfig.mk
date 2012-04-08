@@ -31,15 +31,6 @@ BOARD_PAGE_SIZE := 2048
 # Define Prebuilt kernel locations
 TARGET_PREBUILT_KERNEL := device/htc/shooter/prebuilt/root/kernel
 
-# cat /proc/emmc
-# dev:        size     erasesize name
-# mmcblk0p31: 000ffa00 00000200 "misc"
-# mmcblk0p21: 00fffc00 00000200 "recovery"
-# mmcblk0p20: 01000000 00000200 "boot"
-# mmcblk0p22: 31fffc00 00000200 "system"
-# mmcblk0p24: 077fde00 00000200 "cache"
-# mmcblk0p23: 4aabc400 00000200 "userdata"
-
 TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_BOOTIMAGE_PARTITION_SIZE := 16777216
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 16776192
