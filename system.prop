@@ -41,6 +41,9 @@ ro.use_data_netmgrd=true
 persist.data_netmgrd_nint=8
 persist.data_netmgrd_mtu=1472
 ro.ril.disable.power.collapse=0
+ro.ril.fast.dormancy.timeout=3
+ro.ril.enable.sbm.feature=1
+pm.sleep_mode=1
 #
 
 #Modify MTU from 1500 to 1472 on 3G network
