@@ -12,7 +12,9 @@ debug.qctwa.preservebuf = 1
 
 # Android Display
 windowsmgr.max_events_per_sec=275
+video.accelerate.hw=1
 ro.config.disable_hw_accel=false
+debug.performance.tuning=1
 debug.fb.rgb565=0
 debug.sf.hw=1
 
@@ -38,6 +40,7 @@ gsm.operator.iso-country = us
 ro.use_data_netmgrd=true
 persist.data_netmgrd_nint=8
 persist.data_netmgrd_mtu=1472
+ro.ril.disable.power.collapse=0
 #
 
 #Modify MTU from 1500 to 1472 on 3G network
