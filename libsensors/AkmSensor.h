@@ -14,13 +14,14 @@
  * limitations under the License.
  */
 
-#ifndef ANDROID_LIGHT_SENSOR_H
-#define ANDROID_LIGHT_SENSOR_H
+#ifndef ANDROID_AKM_SENSOR_H
+#define ANDROID_AKM_SENSOR_H
 
 #include <stdint.h>
 #include <errno.h>
 #include <sys/cdefs.h>
 #include <sys/types.h>
+
 
 #include "nusensors.h"
 #include "SensorBase.h"
@@ -30,23 +31,32 @@
 
 struct input_event;
 
-class LightSensor : public SensorBase {
-    int mEnabled;
-    InputEventCircularReader mInputReader;
-    sensors_event_t mPendingEvent;
-    bool mHasPendingEvent;
-
-    float indexToValue(size_t index) const;
-    int setInitialState();
-
+class AkmSensor : public SensorBase {
 public:
-            LightSensor();
-    virtual ~LightSensor();
-    virtual int readEvents(sensors_event_t* data, int count);
-    virtual bool hasPendingEvents() const;
+            AkmSensor();
+    virtual ~AkmSensor();
+
+    enum {
+        Accelerometer   = 0,
+        MagneticField   = 1,
+        Orientation     = 2,
+        numSensors
+    };
+
+    virtual int setDelay(int32_t handle, int64_t ns);
     virtual int enable(int32_t handle, int enabled);
+    virtual int readEvents(sensors_event_t* data, int count);
+    void processEvent(int code, int value);
+
+private:
+    int update_delay();
+    uint32_t mEnabled;
+    uint32_t mPendingMask;
+    InputEventCircularReader mInputReader;
+    sensors_event_t mPendingEvents[numSensors];
+    uint64_t mDelays[numSensors];
 };
 
 /*****************************************************************************/
 
-#endif  // ANDROID_LIGHT_SENSOR_H
+#endif  // ANDROID_AKM_SENSOR_H

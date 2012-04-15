@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-#ifndef ANDROID_PYRAMID_SENSORS_H
-#define ANDROID_PYRAMID_SENSORS_H
+#ifndef ANDROID_SENSORS_H
+#define ANDROID_SENSORS_H
 
 #include <stdint.h>
 #include <errno.h>
@@ -31,11 +31,17 @@ __BEGIN_DECLS
 
 /*****************************************************************************/
 
+int init_nusensors(hw_module_t const* module, hw_device_t** device);
+
+/*****************************************************************************/
+
 #define ARRAY_SIZE(a) (sizeof(a) / sizeof(a[0]))
 
-#define ID_PYRAMID_BASE (0x1000)
-#define ID_P  (ID_PYRAMID_BASE)
-#define ID_L  (ID_P + 1)
+#define ID_A  (0)
+#define ID_M  (1)
+#define ID_O  (2)
+#define ID_P  (3)
+#define ID_L  (4)
 
 /*****************************************************************************/
 
@@ -49,8 +55,9 @@ __BEGIN_DECLS
 
 /*****************************************************************************/
 
-#define CM_DEVICE_NAME              "/dev/cm3602"
-#define LS_DEVICE_NAME              "/dev/lightsensor"
+#define AKM_DEVICE_NAME     "/dev/akm8975_aot"
+#define CM_DEVICE_NAME      "/dev/cm3602"
+#define LS_DEVICE_NAME      "/dev/lightsensor"
 
 #define EVENT_TYPE_ACCEL_X          ABS_X
 #define EVENT_TYPE_ACCEL_Y          ABS_Z
@@ -73,6 +80,7 @@ __BEGIN_DECLS
 
 // 720 LSG = 1G
 #define LSG                         (720.0f)
+
 
 // conversion of acceleration data to SI units (m/s^2)
 #define CONVERT_A                   (GRAVITY_EARTH / LSG)
@@ -97,4 +105,4 @@ __BEGIN_DECLS
 
 __END_DECLS
 
-#endif  // ANDROID_PYRAMID_SENSORS_H
+#endif  // ANDROID_SENSORS_H

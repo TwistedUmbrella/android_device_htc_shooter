@@ -12,7 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-
 LOCAL_PATH:= $(call my-dir)
 
 ifneq ($(TARGET_SIMULATOR),true)
@@ -34,3 +33,4 @@ LOCAL_MODULE_TAGS := optional
 include $(BUILD_SHARED_LIBRARY)
 
 endif # !TARGET_SIMULATOR
+

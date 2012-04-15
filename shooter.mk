@@ -30,6 +30,15 @@ PRODUCT_AAPT_PREF_CONFIG := hdpi
 PRODUCT_COPY_FILES += \
     device/htc/shooter/prebuilt/system/etc/gps.conf:system/etc/gps.conf
 
+## recovery and custom charging
+PRODUCT_COPY_FILES += \
+    device/htc/shooter/prebuilt/root/init:recovery/root/init \
+    device/htc/shooter/recovery/sbin/choice_fn:recovery/root/sbin/choice_fn \
+    device/htc/shooter/recovery/sbin/power_test:recovery/root/sbin/power_test \
+    device/htc/shooter/recovery/sbin/offmode_charging:recovery/root/sbin/offmode_charging \
+    device/htc/shooter/recovery/sbin/detect_key:recovery/root/sbin/detect_key \
+    device/htc/shooter/recovery/sbin/htcbatt:recovery/root/sbin/htcbatt
+
 ## (1) First, the most specific values, i.e. the aspects that are specific to GSM
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.com.google.clientidbase=android-sprint-us \
@@ -40,6 +49,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.dexopt-flags=m=y
 
 PRODUCT_COPY_FILES += \
+    device/htc/shooter/prebuilt/root/init:root/init \
     device/htc/shooter/prebuilt/root/init.shooter.rc:root/init.shooter.rc \
     device/htc/shooter/prebuilt/root/ueventd.shooter.rc:root/ueventd.shooter.rc
 
@@ -101,7 +111,8 @@ PRODUCT_COPY_FILES += \
 
 # Firmware
 PRODUCT_COPY_FILES += \
-    device/htc/shooter/prebuilt/system/etc/firmware/default_bak.acdb:/system/etc/firmware/default_bak.acdb
+    device/htc/shooter/prebuilt/system/etc/firmware/default_bak.acdb:/system/etc/firmware/default_bak.acdb \
+    device/htc/shooter/prebuilt/system/etc/thermald.conf:/system/etc/thermald.conf
 
 # Kernel Modules
 PRODUCT_COPY_FILES += $(shell \
@@ -117,8 +128,6 @@ PRODUCT_LOCALES += en
 PRODUCT_COPY_FILES += \
     device/htc/shooter/prebuilt/system/etc/vold.fstab:system/etc/vold.fstab \
     device/htc/shooter/prebuilt/system/etc/apns-conf.xml:system/etc/apns-conf.xml
-
-$(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
 ifeq ($(TARGET_PREBUILT_KERNEL),)
 	LOCAL_KERNEL := device/htc/shooter/prebuilt/root/kernel
@@ -137,6 +146,8 @@ $(call inherit-product, device/htc/shooter/media_a1026.mk)
 
 # htc audio settings
 $(call inherit-product, device/htc/shooter/media_htcaudio.mk)
+
+$(call inherit-product, frameworks/base/build/phone-hdpi-512-dalvik-heap.mk)
 
 # stuff common to all HTC phones
 $(call inherit-product, device/htc/common/common.mk)
