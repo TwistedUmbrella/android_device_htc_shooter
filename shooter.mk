@@ -23,9 +23,6 @@ $(call inherit-product-if-exists, vendor/htc/shooter/shooter-vendor.mk)
 # Inherit Language Files
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
-PRODUCT_AAPT_CONFIG := normal hdpi
-PRODUCT_AAPT_PREF_CONFIG := hdpi
-
 # The gps config appropriate for this device
 PRODUCT_COPY_FILES += \
     device/htc/shooter/prebuilt/system/etc/gps.conf:system/etc/gps.conf
