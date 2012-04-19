@@ -31,9 +31,6 @@ BOARD_KERNEL_CMDLINE := console=ttyHSL0 androidboot.hardware=shooter no_console_
 BOARD_KERNEL_BASE := 0x48000000
 BOARD_KERNEL_PAGE_SIZE := 2048
 
-# Define Prebuilt kernel locations
-TARGET_PREBUILT_KERNEL := device/htc/shooter/prebuilt/root/kernel
-
 TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 435941376
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 1394606080
@@ -44,7 +41,7 @@ TARGET_RELEASETOOLS_EXTENSIONS := device/htc/common
 
 # TARGET_PREBUILT_KERNEL := device/htc/shooter/prebuilt/root/kernel
 TARGET_KERNEL_CONFIG := cm9_shooter_defconfig
-TARGET_KERNEL_SOURCE := kernel/htc/msm8660
+TARGET_KERNEL_SOURCE := kernel/htc/shooter
 
 TARGET_RECOVERY_INITRC := device/htc/shooter/recovery/init.rc
 BOARD_SDCARD_DEVICE_PRIMARY := /dev/block/mmcblk1p1
