@@ -111,11 +111,20 @@ PRODUCT_COPY_FILES += \
     device/htc/shooter/prebuilt/system/etc/firmware/default_bak.acdb:/system/etc/firmware/default_bak.acdb \
     device/htc/shooter/prebuilt/system/etc/thermald.conf:/system/etc/thermald.conf
 
+ifneq ($(TARGET_PREBUILT_KERNEL),)
+
+# Local Kernel
+LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
+PRODUCT_COPY_FILES += \
+    $(LOCAL_KERNEL):kernel
+
 # Kernel Modules
 PRODUCT_COPY_FILES += $(shell \
     find device/htc/shooter/prebuilt/system/lib/modules -name '*.ko' \
     | sed -r 's/^\/?(.*\/)([^/ ]+)$$/\1\2:system\/lib\/modules\/\2/' \
     | tr '\n' ' ')
+
+endif
 
 # we have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
@@ -125,15 +134,6 @@ PRODUCT_LOCALES += en
 PRODUCT_COPY_FILES += \
     device/htc/shooter/prebuilt/system/etc/vold.fstab:system/etc/vold.fstab \
     device/htc/shooter/prebuilt/system/etc/apns-conf.xml:system/etc/apns-conf.xml
-
-ifeq ($(TARGET_PREBUILT_KERNEL),)
-	LOCAL_KERNEL := device/htc/shooter/prebuilt/root/kernel
-else
-	LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
-endif
-
-PRODUCT_COPY_FILES += \
-    $(LOCAL_KERNEL):kernel
 
 # common msm8660 configs
 $(call inherit-product, device/htc/msm8660-common/msm8660.mk)

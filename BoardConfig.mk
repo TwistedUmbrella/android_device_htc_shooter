@@ -42,7 +42,9 @@ BOARD_FLASH_BLOCK_SIZE := 262144
 BOARD_CUSTOM_GRAPHICS := ../../../device/htc/shooter/recovery/graphics.c
 TARGET_RELEASETOOLS_EXTENSIONS := device/htc/common
 
-TARGET_PREBUILT_KERNEL := device/htc/shooter/prebuilt/root/kernel
+# TARGET_PREBUILT_KERNEL := device/htc/shooter/prebuilt/root/kernel
+TARGET_KERNEL_CONFIG := cm9_shooter_defconfig
+TARGET_KERNEL_SOURCE := kernel/htc/msm8660
 
 TARGET_RECOVERY_INITRC := device/htc/shooter/recovery/init.rc
 BOARD_SDCARD_DEVICE_PRIMARY := /dev/block/mmcblk1p1
