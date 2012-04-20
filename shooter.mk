@@ -109,8 +109,9 @@ PRODUCT_COPY_FILES += \
 
 # Firmware
 PRODUCT_COPY_FILES += \
-    device/htc/shooter/prebuilt/system/etc/firmware/default_bak.acdb:/system/etc/firmware/default_bak.acdb \
-    device/htc/shooter/prebuilt/system/etc/thermald.conf:/system/etc/thermald.conf
+    device/htc/shooter/prebuilt/system/etc/firmware/default_bak.acdb:/system/etc/firmware/default_bak.acdb
+
+TARGET_PREBUILT_KERNEL := device/htc/shooter/prebuilt/root/kernel
 
 ifneq ($(TARGET_PREBUILT_KERNEL),)
 
