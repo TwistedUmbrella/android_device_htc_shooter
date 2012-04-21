@@ -92,7 +92,8 @@ PRODUCT_COPY_FILES += \
 
 # Misc
 PRODUCT_PACKAGES += \
-    gps.shooter
+    gps.shooter \
+    lights.shooter
 
 # Keylayouts
 PRODUCT_COPY_FILES += \
