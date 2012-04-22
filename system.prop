@@ -11,7 +11,7 @@ debug.qctwa.statusbar = 1
 debug.qctwa.preservebuf = 1
 
 # Android Display
-windowsmgr.max_events_per_sec=275
+windowsmgr.max_events_per_sec=240
 video.accelerate.hw=1
 ro.config.disable_hw_accel=false
 debug.performance.tuning=1
