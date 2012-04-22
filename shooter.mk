@@ -37,15 +37,6 @@ PRODUCT_COPY_FILES += \
     device/htc/shooter/recovery/sbin/detect_key:recovery/root/sbin/detect_key \
     device/htc/shooter/recovery/sbin/htcbatt:recovery/root/sbin/htcbatt
 
-## (1) First, the most specific values, i.e. the aspects that are specific to GSM
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.com.google.clientidbase=android-sprint-us \
-    ro.com.google.locationfeatures=1 \
-    ro.com.google.networklocation=1 \
-    ro.setupwizard.enable_bypass=1 \
-    dalvik.vm.lockprof.threshold=500 \
-    dalvik.vm.dexopt-flags=m=y
-
 PRODUCT_COPY_FILES += \
     device/htc/shooter/prebuilt/root/init:root/init \
     device/htc/shooter/prebuilt/root/init.shooter.rc:root/init.shooter.rc \
@@ -68,6 +59,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	ro.com.google.clientidbase.vs=android-sprint-us \
 	ro.com.google.clientidbase.gmm=android-sprint-us \
 	ro.com.google.clientidbase.ms=android-sprint-us \
+	ro.com.google.locationfeatures=1 \
+	ro.com.google.networklocation=1 \
 	ro.phone.min_match=7 \
 	ro.product.model=PG86100 \
 	ro.cdma.home.operator.alpha=sprint \
