@@ -23,6 +23,12 @@ ro.sf.lcd_density=240
 # 3D Panel
 persist.user.panel3D=1
 
+# Cabl
+ro.qualcomm.cabl=0
+
+# Thermald
+persist.thermal.monitor=false
+
 rild.libpath=/system/lib/libhtc_ril.so
 # htc v4 ril
 ro.telephony.ril.v3=signalstrength
