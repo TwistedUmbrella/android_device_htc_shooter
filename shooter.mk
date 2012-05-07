@@ -48,6 +48,10 @@ PRODUCT_COPY_FILES += \
     device/htc/shooter/prebuilt/system/usr/keylayout/atmel-touchscreen.kl:system/usr/keylayout/atmel-touchscreen.kl \
     device/htc/shooter/prebuilt/system/usr/idc/shooter-keypad.idc:system/usr/idc/shooter-keypad.idc
 
+# media config xml file
+PRODUCT_COPY_FILES += \
+    device/htc/shooter/prebuilt/system/etc/media_profiles.xml:system/etc/media_profiles.xml
+
 ## (2) Also get non-open-source GSM-specific aspects if available
 $(call inherit-product-if-exists, vendor/htc/shooter/shooter-vendor.mk)
 
